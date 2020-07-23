@@ -1,0 +1,67 @@
+{
+  "templates": [
+    {
+      "file": "cronjob-template.yaml",
+      "patchFile": "kustomize.patch",
+      "dev": {
+        "params": {
+          "INTERPRETER": "python",
+          "EXECUTABLE": "app.py",
+          "SCHEDULE": "*/4 * * * *"
+        }
+      },
+      "qa": {
+        "params": {
+          "INTERPRETER": "python",
+          "EXECUTABLE": "app.py",
+          "SCHEDULE": "*/4 * * * *"
+        }
+      },
+      "stg": {
+        "params": {
+          "INTERPRETER": "python",
+          "EXECUTABLE": "app.py",
+          "SCHEDULE": "*/4 * * * *"
+        }
+      },
+      "prod": {
+        "params": {
+          "INTERPRETER": "python",
+          "EXECUTABLE": "app.py",
+          "SCHEDULE": "*/4 * * * *"
+        }
+      }
+    },
+    {
+      "appName": "ktest-cicd3",
+      "file": "configmap-template.yaml",
+      "params": {
+        "CGROUP": "devcgroup",
+        "TOPIC_NAME": "devtopic"
+
+      },
+      "dev": {
+        "params": {
+        }
+      },
+      "qa": {
+        "params": {
+          "CGROUP": "qacgroup",
+          "TOPIC_NAME": "qatopic"
+        }
+      },
+      "stg": {
+        "params": {
+          "CGROUP": "stgcgroup",
+          "TOPIC_NAME": "qatopic"
+        }
+      },
+      "prod": {
+        "params": {
+          "CGROUP": "prodcgroup",
+          "TOPIC_NAME": "prodtopic"
+        }
+      }
+    }
+  ]
+}
