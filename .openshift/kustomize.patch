@@ -23,10 +23,7 @@
   path: /objects/0/spec/template/spec/containers/0/volumeMounts
   value:
     - mountPath: /mnt
-      name: configmap-file
-              volumeMounts:
-              - mountPath: /mnt
-                name: cm-mount
+      name: cm-mount
 
 - op: add
   path: /objects/0/spec/template/spec/volumes
