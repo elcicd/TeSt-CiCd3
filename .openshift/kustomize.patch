@@ -1,5 +1,5 @@
 - op: add
-  path: /objects/0/spec/template/spec/containers/0/env
+  path: /objects/0/spec/jobTemplate/spec/template/spec/containers/0/env
   value:
     - name: PYTHONUNBUFFERED
       value: "1"
@@ -20,13 +20,13 @@
           name: ${APP_NAME}-config-map
 
 - op: add
-  path: /objects/0/spec/template/spec/containers/0/volumeMounts
+  path: /objects/0/spec/jobTemplate/spec/template/spec/containers/0/volumeMounts
   value:
     - mountPath: /mnt
       name: cm-mount
 
 - op: add
-  path: /objects/0/spec/template/spec/volumes
+  path: /objects/0/spec/jobTemplate/spec/template/spec/volumes
   value:
     - configMap:
         name: ${APP_NAME}-config-map
