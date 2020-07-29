@@ -33,7 +33,7 @@
 			}
 		},
 		{
-			"appName": "ktest-cicd3",
+			"appName": "test-cicd3-config-map",
 			"file": "configmap-template.yaml",
 			"params": {
 				"CGROUP": "devcgroup",

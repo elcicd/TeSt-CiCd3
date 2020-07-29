@@ -12,7 +12,7 @@ objects:
     cgroup: ${CGROUP}
     topicname: ${TOPIC_NAME}
   metadata:
-    name: ${APP_NAME}-config-map
+    name: ${APP_NAME}
 ############################################
 parameters:
 - description: The name for the microservice
