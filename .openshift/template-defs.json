@@ -1,6 +1,5 @@
 {
 	"templates": [{
-			"file": "cronjob-template.yaml",
 			"templateName": "cronjob-template",
 			"patchFile": "kustomize.patch",
 			"dev": {
