@@ -7,28 +7,28 @@
 				"params": {
 					"INTERPRETER": "python",
 					"EXECUTABLE": "app.py",
-					"SCHEDULE": "*/4 * * * *"
+					"SCHEDULE": "*/3 * * * *"
 				}
 			},
 			"qa": {
 				"params": {
 					"INTERPRETER": "python",
 					"EXECUTABLE": "app.py",
-					"SCHEDULE": "*/4 * * * *"
+					"SCHEDULE": "*/3 * * * *"
 				}
 			},
 			"stg": {
 				"params": {
 					"INTERPRETER": "python",
 					"EXECUTABLE": "app.py",
-					"SCHEDULE": "*/4 * * * *"
+					"SCHEDULE": "*/3 * * * *"
 				}
 			},
 			"prod": {
 				"params": {
 					"INTERPRETER": "python",
 					"EXECUTABLE": "app.py",
-					"SCHEDULE": "*/4 * * * *"
+					"SCHEDULE": "*/3 * * * *"
 				}
 			}
 		},
