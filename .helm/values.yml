@@ -33,6 +33,7 @@ templates:
   - name: ${VOLUME_NAME}
     configMap:
       name: ${MICROSERVICE_NAME}-${CONFIG_MAP}
+
 - templateName: configMap
   appName: ${MICROSERVICE_NAME}-${CONFIG_MAP}
   data:
