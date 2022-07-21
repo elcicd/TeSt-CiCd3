@@ -7,7 +7,7 @@ templateVars:
 
 templates:
 - templateName: cronjob
-  schedule: "'*/3 * * * *'"
+  schedule: "*/3 * * * *"
   env: 
   - name: PYTHONUNBUFFERED
     value: "1"
