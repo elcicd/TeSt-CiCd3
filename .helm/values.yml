@@ -1,41 +1,42 @@
-parameters:
-  CGROUP: cgroup
-  TOPIC_NAME: topicname
-  VOLUME_NAME: cm-mount
-  CONFIG_MAP: config-map
-  PASSWORD: password
+elCicdChart:
+  parameters:
+    CGROUP: cgroup
+    TOPIC_NAME: topicname
+    VOLUME_NAME: cm-mount
+    CONFIG_MAP: config-map
+    PASSWORD: password
 
-templates:
-- templateName: cronjob
-  schedule: "*/3 * * * *"
-  env: 
-  - name: PYTHONUNBUFFERED
-    value: "1"
-  - name: ${PASSWORD}
-    valueFrom:
-      secretKeyRef:
-        key: ${PASSWORD}
-        name: ${MICROSERVICE_NAME}-sealed-secret
-  - name: ${TOPIC_NAME}
-    valueFrom:
-      configMapKeyRef:
-        key: ${CGROUP}
+  templates:
+  - templateName: cronjob
+    schedule: "*/3 * * * *"
+    env: 
+    - name: PYTHONUNBUFFERED
+      value: "1"
+    - name: ${PASSWORD}
+      valueFrom:
+        secretKeyRef:
+          key: ${PASSWORD}
+          name: ${MICROSERVICE_NAME}-sealed-secret
+    - name: ${TOPIC_NAME}
+      valueFrom:
+        configMapKeyRef:
+          key: ${CGROUP}
+          name: ${MICROSERVICE_NAME}-${CONFIG_MAP}
+    - name: ${TOPIC_NAME}
+      valueFrom:
+        configMapKeyRef:
+          key: ${TOPIC_NAME}
+          name: ${MICROSERVICE_NAME}-${CONFIG_MAP}
+    volumeMounts:
+    - name: ${VOLUME_NAME}
+      mountPath: /mnt
+    volumes:
+    - name: ${VOLUME_NAME}
+      configMap:
         name: ${MICROSERVICE_NAME}-${CONFIG_MAP}
-  - name: ${TOPIC_NAME}
-    valueFrom:
-      configMapKeyRef:
-        key: ${TOPIC_NAME}
-        name: ${MICROSERVICE_NAME}-${CONFIG_MAP}
-  volumeMounts:
-  - name: ${VOLUME_NAME}
-    mountPath: /mnt
-  volumes:
-  - name: ${VOLUME_NAME}
-    configMap:
-      name: ${MICROSERVICE_NAME}-${CONFIG_MAP}
 
-- templateName: configMap
-  appName: ${MICROSERVICE_NAME}-${CONFIG_MAP}
-  data:
-    ${CGROUP}: ${SDLC_ENV}${CGROUP}
-    ${TOPIC_NAME}: ${SDLC_ENV}topic
+  - templateName: configMap
+    appName: ${MICROSERVICE_NAME}-${CONFIG_MAP}
+    data:
+      ${CGROUP}: ${SDLC_ENV}${CGROUP}
+      ${TOPIC_NAME}: ${SDLC_ENV}topic
