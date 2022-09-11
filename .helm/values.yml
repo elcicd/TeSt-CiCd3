@@ -1,5 +1,5 @@
 elCicdChart:
-  parameters:
+  elcicdDefs:
     CGROUP: cgroup
     TOPIC_NAME: topicname
     VOLUME_NAME: cm-mount
