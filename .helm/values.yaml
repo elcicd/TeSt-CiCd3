@@ -16,7 +16,7 @@ elCicdTemplates:
       secretKeyRef:
         key: ${PASSWORD}
         name: ${COMPONENT_NAME}-sealed-secret
-  - name: ${TOPIC_NAME}
+  - name: ${CGROUP}
     valueFrom:
       configMapKeyRef:
         key: ${CGROUP}
