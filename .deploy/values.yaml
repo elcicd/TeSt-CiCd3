@@ -11,31 +11,31 @@ elCicdTemplates:
   env: 
   - name: PYTHONUNBUFFERED
     value: "1"
-  - name: ${PASSWORD}
+  - name: $<PASSWORD>
     valueFrom:
       secretKeyRef:
-        key: ${PASSWORD}
-        name: ${COMPONENT_NAME}-sealed-secret
-  - name: ${CGROUP}
+        key: $<PASSWORD>
+        name: $<COMPONENT_NAME>-sealed-secret
+  - name: $<CGROUP>
     valueFrom:
       configMapKeyRef:
-        key: ${CGROUP}
-        name: ${COMPONENT_NAME}-${CONFIG_MAP}
-  - name: ${TOPIC_NAME}
+        key: $<CGROUP>
+        name: $<COMPONENT_NAME>-$<CONFIG_MAP>
+  - name: $<TOPIC_NAME>
     valueFrom:
       configMapKeyRef:
-        key: ${TOPIC_NAME}
-        name: ${COMPONENT_NAME}-${CONFIG_MAP}
+        key: $<TOPIC_NAME>
+        name: $<COMPONENT_NAME>-$<CONFIG_MAP>
   volumeMounts:
-  - name: ${VOLUME_NAME}
+  - name: $<VOLUME_NAME>
     mountPath: /mnt
   volumes:
-  - name: ${VOLUME_NAME}
+  - name: $<VOLUME_NAME>
     configMap:
-      name: ${COMPONENT_NAME}-${CONFIG_MAP}
+      name: $<COMPONENT_NAME>-$<CONFIG_MAP>
 
 - templateName: configMap
-  objName: ${COMPONENT_NAME}-${CONFIG_MAP}
+  objName: $<COMPONENT_NAME>-$<CONFIG_MAP>
   data:
-    ${CGROUP}: ${SDLC_ENV}${CGROUP}
-    ${TOPIC_NAME}: ${SDLC_ENV}topic
+    $<CGROUP>: $<SDLC_ENV>$<CGROUP>
+    $<TOPIC_NAME>: $<SDLC_ENV>topic
